@@ -1,13 +1,21 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from pydantic import BaseModel
 
-Base = declarative_base()
+# User schemas
+class UserCreate(BaseModel):
+    name: str
+    email: str
+    phoneNumber: str
+    location: str
+    paymentMethod: str
+    password: str
 
-class User(Base):
-    __tablename__ = "users"
-    id = Column(Integer, primary_key=True, index=True)
-    email = Column(String, unique=True, index=True)
-    password_hash = Column(String)
+class UserOut(BaseModel):
+    userID: int
+    name: str
+    email: str
+    phoneNumber: str
+    location: str
+    paymentMethod: str
 
 class Car(Base):
     __tablename__ = "cars"

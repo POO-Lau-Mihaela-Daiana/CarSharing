@@ -1,24 +1,17 @@
 from pydantic import BaseModel
 
-# User schemas
 class UserCreate(BaseModel):
+    name: str
     email: str
+    phoneNumber: str
+    location: str
+    paymentMethod: str
     password: str
 
 class UserOut(BaseModel):
     id: int
+    name: str
     email: str
-
-# Car schemas
-class CarCreate(BaseModel):
-    vin: str
+    phoneNumber: str
     location: str
-
-class CarOut(BaseModel):
-    id: int
-    vin: str
-    location: str
-    available: bool
-
-class CarAvailability(BaseModel):
-    available: bool
+    paymentMethod: str
